@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@alemdacap | Rock & Metal Links</title>
+    <title>@alemdacap | Rock & Metal Store</title>
     
-    <!-- Fontes Estilo Rock (Oswald para Títulos e Inter para Texto) -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <!-- Fontes Estilo Rock -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     
     <style>
-        /* DESIGN TOKENS - ESTÉTICA NEON DARK */
+        /* =========================================
+           DESIGN TOKENS - ESTÉTICA NEON DARK
+           ========================================= */
         :root {
-            --bg-color: #080808;
+            --bg-color: #050505;
             --card-bg: #121212;
             --neon-magenta: #ff00ff;
             --neon-cyan: #00f2ff;
             --text-main: #ffffff;
-            --text-dim: #b0b0b0;
+            --text-dim: #a0a0a0;
             --font-rock: 'Oswald', sans-serif;
             --font-body: 'Inter', sans-serif;
         }
 
-        /* RESET BÁSICO E ACESSIBILIDADE */
         * {
             margin: 0;
             padding: 0;
@@ -36,234 +37,281 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 40px 20px;
+            padding: 20px 15px;
             min-height: 100vh;
-            background: radial-gradient(circle at top, #1a1a1a 0%, #080808 100%);
+            background: radial-gradient(circle at top, #1a1a1a 0%, #050505 100%);
         }
 
-        /* HEADER */
+        /* =========================================
+           HEADER FIXO E PERFIL
+           ========================================= */
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
             width: 100%;
-            max-width: 480px;
+            max-width: 500px;
+            position: relative;
+        }
+
+        /* Botão de Voltar (Invisível na Home) */
+        #btn-voltar {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 10px;
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 5px 12px;
+            border-radius: 8px;
+            font-family: var(--font-rock);
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+
+        #btn-voltar:hover {
+            background: var(--neon-cyan);
+            color: #000;
         }
 
         .profile-pic {
-            width: 120px;
-            height: 120px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
-            border: 3px solid var(--neon-magenta);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
-            margin-bottom: 20px;
+            border: 2px solid var(--neon-magenta);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+            margin-bottom: 10px;
             object-fit: cover;
             background: #222;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-pic:hover {
-            transform: scale(1.05);
         }
 
         h1 {
             font-family: var(--font-rock);
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             color: var(--neon-cyan);
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.4);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .bio {
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: var(--text-dim);
-            max-width: 300px;
+            max-width: 320px;
             margin: 0 auto;
-            line-height: 1.5;
         }
 
-        /* CONTAINER PRINCIPAL */
-        .content-wrapper {
-            width: 100%;
-            max-width: 480px;
-        }
-
-        /* CATEGORIAS */
-        .category-title {
+        /* Título Dinâmico da Tela Atual */
+        #titulo-tela {
             font-family: var(--font-rock);
-            font-size: 1.3rem;
-            text-transform: uppercase;
+            font-size: 1.4rem;
             color: var(--neon-magenta);
-            margin: 40px 0 20px;
-            padding-left: 12px;
-            border-left: 3px solid var(--neon-magenta);
+            text-transform: uppercase;
+            margin: 25px 0 15px;
+            text-align: center;
             letter-spacing: 1px;
-            display: flex;
-            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
         }
 
-        /* CARDS */
-        .card {
+        /* =========================================
+           ÁREA PRINCIPAL DE CONTEÚDO
+           ========================================= */
+        #app-container {
+            width: 100%;
+            max-width: 500px;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* =========================================
+           ESTILOS DOS CARDS (CATEGORIAS E BANDAS)
+           ========================================= */
+        .grid-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .list-card {
             background: var(--card-bg);
             border: 1px solid #222;
-            border-radius: 16px;
-            overflow: hidden;
-            margin-bottom: 25px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
+        .list-card:hover {
+            border-color: var(--neon-magenta);
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.1);
+        }
+
+        .list-card-title {
+            font-family: var(--font-rock);
+            font-size: 1.2rem;
+            color: #fff;
+            letter-spacing: 1px;
+        }
+
+        .list-card-icon {
+            color: var(--neon-cyan);
+            font-size: 1.2rem;
+        }
+
+        /* =========================================
+           ESTILOS DA TELA DE PRODUTOS
+           ========================================= */
+        /* Contadores (CD: 3 | Vinil: 1) */
+        .product-counters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+            justify-content: center;
+        }
+
+        .badge {
+            background: rgba(0, 242, 255, 0.1);
+            color: var(--neon-cyan);
+            border: 1px solid var(--neon-cyan);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Grid de Produtos Final */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: 0.3s;
+        }
+
+        .product-card:hover {
             border-color: var(--neon-cyan);
         }
 
-        .card-img {
+        .product-img {
             width: 100%;
-            height: 200px;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
-            display: block;
             background: #1a1a1a;
+            border-bottom: 1px solid #333;
         }
 
-        .card-content {
-            padding: 20px;
+        .product-info {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-        .card-title {
-            font-family: var(--font-rock);
-            font-size: 1.2rem;
-            margin-bottom: 8px;
+        .product-title {
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.85rem;
             color: #fff;
+            margin-bottom: 4px;
         }
 
-        .card-description {
-            font-size: 0.9rem;
+        .product-type {
+            font-size: 0.75rem;
             color: var(--text-dim);
-            margin-bottom: 20px;
-            line-height: 1.5;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
 
-        /* BOTÃO DE COMPRA */
-        .btn-action {
+        .btn-buy {
+            margin-top: auto;
             display: block;
             width: 100%;
-            padding: 14px;
+            padding: 8px 0;
             text-align: center;
             background: transparent;
             color: var(--neon-cyan);
-            border: 2px solid var(--neon-cyan);
-            border-radius: 12px;
+            border: 1px solid var(--neon-cyan);
+            border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
+            font-size: 0.8rem;
             text-transform: uppercase;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-            letter-spacing: 1px;
+            transition: 0.3s;
         }
 
-        .btn-action:hover {
+        .btn-buy:hover {
             background: var(--neon-cyan);
             color: #000;
-            box-shadow: 0 0 20px var(--neon-cyan);
         }
 
-        /* RODAPÉ */
+        /* =========================================
+           RODAPÉ
+           ========================================= */
         footer {
-            margin-top: 60px;
+            margin-top: 50px;
             text-align: center;
-            padding-bottom: 40px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin-bottom: 20px;
+            width: 100%;
         }
 
         .social-links a {
             color: var(--text-main);
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: 600;
-            transition: color 0.3s;
             text-transform: uppercase;
+            margin: 0 10px;
+            transition: 0.3s;
         }
 
-        .social-links a:hover {
-            color: var(--neon-magenta);
-        }
+        .social-links a:hover { color: var(--neon-magenta); }
 
         .copyright {
             font-size: 0.7rem;
             color: #444;
-            letter-spacing: 1px;
+            margin-top: 15px;
         }
 
-        /* RESPONSIVIDADE PARA MOBILE */
         @media (max-width: 380px) {
-            h1 { font-size: 1.8rem; }
-            .card-img { height: 160px; }
+            .products-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <!-- LOGO: Carrega o arquivo local logo.jpeg. Se der erro, puxa a foto do GitHub -->
-        <img src="logo.jpeg" alt="Logótipo Além da Capa" class="profile-pic" onerror="this.src='https://github.com/abozzojr.png'">
-        
+        <button id="btn-voltar" onclick="voltar()">← Voltar</button>
+        <img src="logo.jpeg" alt="Logo Além da Capa" class="profile-pic" onerror="this.src='https://github.com/abozzojr.png'">
         <h1>@alemdacap</h1>
-        <p class="bio">As histórias por trás das capas mais icónicas da música. 🤘</p>
+        <p class="bio" id="bio-text">A sua vitrine definitiva do Rock n' Roll. 🤘</p>
     </header>
 
-    <main class="content-wrapper">
+    <h2 id="titulo-tela">Selecione uma Categoria</h2>
 
-        <!-- CATEGORIA 01: DISCOS -->
-        <h2 class="category-title">Albuns Clássicos</h2>
-
-        <div class="card">
-            <!-- Imagem via Caminho Relativo (Apenas o nome do arquivo) -->
-            <img src="discos.png" alt="Disco de Vinil" class="card-img">
-            <div class="card-content">
-                <h3 class="card-title">A Arte em Suas Mãos: LPs, CDs e Box Sets</h3>
-                <p class="card-description">As melhores prensagens das capas que analisamos no nosso perfil.</p>
-                <!-- SUBSTITUA O # PELO SEU LINK DE AFILIADO AMAZON -->
-                <a href="SEU_LINK_AMAZON_AQUI" target="_blank" class="btn-action">Comprar na Amazon</a>
-            </div>
-        </div>
-
-        <!-- CATEGORIA 02: LIVROS -->
-        <h2 class="category-title">Biblioteca do Rock</h2>
-
-        <div class="card">
-            <!-- Imagem via Caminho Relativo -->
-            <img src="livros.png" alt="Livro sobre Rock" class="card-img">
-            <div class="card-content">
-                <h3 class="card-title">Biografias e Bastidores</h3>
-                <p class="card-description">Descubra os detalhes que não cabem num vídeo de 60 segundos.</p>
-                <!-- SUBSTITUA O # PELO SEU LINK -->
-                <a href="SEU_LINK_ML_AQUI" target="_blank" class="btn-action">Comprar na Amazon</a>
-            </div>
-        </div>
-
-        <!-- CATEGORIA 03: DECORAÇÃO -->
-        <h2 class="category-title">Caverna do Rock</h2>
-
-        <div class="card">
-            <!-- Imagem via Caminho Relativo -->
-            <img src="diversos.png" alt="Quadro Decorativo" class="card-img">
-            <div class="card-content">
-                <h3 class="card-title">Artigos de Decoração</h3>
-                <p class="card-description">Quadros e acessórios para quem vive e respira Rock n' Roll.</p>
-                <!-- SUBSTITUA O # PELO SEU LINK -->
-                <a href="SEU_LINK_SHOPEE_AQUI" target="_blank" class="btn-action">Comprar na Amazon</a>
-            </div>
-        </div>
-
-    </main>
+    <!-- O CONTEÚDO SERÁ INJETADO AQUI PELO JAVASCRIPT -->
+    <main id="app-container"></main>
 
     <footer>
         <div class="social-links">
@@ -272,5 +320,193 @@
         <p class="copyright">🤘 ALÉM DA CAPA &copy; 2026</p>
     </footer>
 
+    <!-- =========================================================================
+         A MÁGICA ACONTECE AQUI NO JAVASCRIPT (SEU BANCO DE DADOS)
+         ========================================================================= -->
+    <script>
+        /* * 🎸 BANCO DE DADOS DO PROJETO 
+         * Adicione, remova ou edite seus produtos apenas modificando o texto abaixo.
+         * O sistema conta automaticamente a quantidade de CDs, Vinis, etc.
+         */
+        const catalogo = {
+            "albuns": {
+                titulo: "Álbuns Clássicos",
+                bandas: {
+                    "pink-floyd": {
+                        nome: "Pink Floyd",
+                        produtos: [
+                            { nome: "The Dark Side of the Moon", tipo: "Vinil", img: "discos.png", link: "SEU_LINK_AQUI" },
+                            { nome: "The Wall (Remastered)", tipo: "CD", img: "discos.png", link: "SEU_LINK_AQUI" },
+                            { nome: "Wish You Were Here", tipo: "CD", img: "discos.png", link: "SEU_LINK_AQUI" },
+                            { nome: "Animals", tipo: "CD", img: "discos.png", link: "SEU_LINK_AQUI" }
+                        ]
+                    },
+                    "iron-maiden": {
+                        nome: "Iron Maiden",
+                        produtos: [
+                            { nome: "The Number of the Beast", tipo: "Vinil", img: "discos.png", link: "SEU_LINK_AQUI" },
+                            { nome: "Powerslave", tipo: "Vinil", img: "discos.png", link: "SEU_LINK_AQUI" }
+                        ]
+                    }
+                }
+            },
+            "biblioteca": {
+                titulo: "Biblioteca do Rock",
+                bandas: {
+                    "ozzy": {
+                        nome: "Ozzy Osbourne",
+                        produtos: [
+                            { nome: "Eu Sou Ozzy", tipo: "Livro Físico", img: "livros.png", link: "SEU_LINK_AQUI" },
+                            { nome: "Eu Sou Ozzy", tipo: "Kindle", img: "livros.png", link: "SEU_LINK_AQUI" }
+                        ]
+                    },
+                    "led-zeppelin": {
+                        nome: "Led Zeppelin",
+                        produtos: [
+                            { nome: "A Biografia Definitiva", tipo: "Livro Físico", img: "livros.png", link: "SEU_LINK_AQUI" }
+                        ]
+                    }
+                }
+            },
+            "caverna": {
+                titulo: "Caverna do Rock",
+                bandas: {
+                    "decoracao-geral": {
+                        nome: "Decoração Geral",
+                        produtos: [
+                            { nome: "Porta Chaves Marshall", tipo: "Acessório", img: "diversos.png", link: "SEU_LINK_AQUI" },
+                            { nome: "Quadro Iron Maiden", tipo: "Quadro", img: "diversos.png", link: "SEU_LINK_AQUI" },
+                            { nome: "Caneca AC/DC", tipo: "Caneca", img: "diversos.png", link: "SEU_LINK_AQUI" }
+                        ]
+                    }
+                }
+            }
+        };
+
+        // CONTROLE DE NAVEGAÇÃO
+        let estado = {
+            telaAtual: 'home', // 'home', 'bandas', 'produtos'
+            categoriaSelecionada: null,
+            bandaSelecionada: null
+        };
+
+        const appContainer = document.getElementById('app-container');
+        const tituloTela = document.getElementById('titulo-tela');
+        const btnVoltar = document.getElementById('btn-voltar');
+        const bioText = document.getElementById('bio-text');
+
+        // 1. RENDERIZAR TELA INICIAL (CATEGORIAS)
+        function renderHome() {
+            estado.telaAtual = 'home';
+            btnVoltar.style.display = 'none';
+            bioText.style.display = 'block';
+            tituloTela.innerText = "Selecione uma Categoria";
+            
+            let html = '<div class="grid-list">';
+            for (const catId in catalogo) {
+                const cat = catalogo[catId];
+                html += `
+                    <div class="list-card" onclick="abrirCategoria('${catId}')">
+                        <span class="list-card-title">${cat.titulo}</span>
+                        <span class="list-card-icon">➔</span>
+                    </div>
+                `;
+            }
+            html += '</div>';
+            
+            animarEAtualizar(html);
+        }
+
+        // 2. RENDERIZAR BANDAS DE UMA CATEGORIA
+        function abrirCategoria(catId) {
+            estado.telaAtual = 'bandas';
+            estado.categoriaSelecionada = catId;
+            btnVoltar.style.display = 'block';
+            bioText.style.display = 'none';
+            
+            const cat = catalogo[catId];
+            tituloTela.innerText = cat.titulo; // Ex: "Álbuns Clássicos"
+
+            let html = '<div class="grid-list">';
+            for (const bandaId in cat.bandas) {
+                const banda = cat.bandas[bandaId];
+                html += `
+                    <div class="list-card" onclick="abrirBanda('${catId}', '${bandaId}')">
+                        <span class="list-card-title">⚡ ${banda.nome}</span>
+                        <span class="list-card-icon">➔</span>
+                    </div>
+                `;
+            }
+            html += '</div>';
+
+            animarEAtualizar(html);
+        }
+
+        // 3. RENDERIZAR PRODUTOS DE UMA BANDA (COM CONTADORES AUTOMÁTICOS)
+        function abrirBanda(catId, bandaId) {
+            estado.telaAtual = 'produtos';
+            estado.bandaSelecionada = bandaId;
+            
+            const banda = catalogo[catId].bandas[bandaId];
+            tituloTela.innerText = banda.nome; // Ex: "Pink Floyd"
+
+            // O Robô Conta os Produtos Sozinho
+            const contagem = {};
+            banda.produtos.forEach(prod => {
+                if (contagem[prod.tipo]) {
+                    contagem[prod.tipo]++;
+                } else {
+                    contagem[prod.tipo] = 1;
+                }
+            });
+
+            // HTML dos Badges (Etiquetas de contagem)
+            let html = '<div class="product-counters">';
+            for (const tipo in contagem) {
+                html += `<span class="badge">${tipo}: ${contagem[tipo]}</span>`;
+            }
+            html += '</div>';
+
+            // HTML dos Cards de Produto
+            html += '<div class="products-grid">';
+            banda.produtos.forEach(prod => {
+                // Se a imagem não for encontrada, ele tenta colocar uma padrão
+                html += `
+                    <div class="product-card">
+                        <img src="${prod.img}" alt="" class="product-img" onerror="this.src='https://via.placeholder.com/400x400/1a1a1a/00f2ff?text=ROCK'">
+                        <div class="product-info">
+                            <h4 class="product-title">${prod.nome}</h4>
+                            <span class="product-type">${prod.tipo}</span>
+                            <a href="${prod.link}" target="_blank" class="btn-buy">Ver na Loja</a>
+                        </div>
+                    </div>
+                `;
+            });
+            html += '</div>';
+
+            animarEAtualizar(html);
+        }
+
+        // FUNÇÃO DE VOLTAR
+        function voltar() {
+            if (estado.telaAtual === 'produtos') {
+                abrirCategoria(estado.categoriaSelecionada);
+            } else if (estado.telaAtual === 'bandas') {
+                renderHome();
+            }
+        }
+
+        // ANIMAÇÃO SUAVE ENTRE AS TELAS
+        function animarEAtualizar(html) {
+            appContainer.style.animation = 'none';
+            appContainer.offsetHeight; /* Trigger reflow */
+            appContainer.style.animation = 'fadeIn 0.3s ease-in-out';
+            appContainer.innerHTML = html;
+        }
+
+        // Iniciar o site
+        renderHome();
+
+    </script>
 </body>
 </html>
