@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-pt">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Oswald:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* DESIGN TOKENS & CORES NEON */
+        /* DESIGN TOKENS - ESTÉTICA NEON DARK */
         :root {
             --bg-color: #080808;
             --card-bg: #121212;
@@ -21,7 +21,7 @@
             --font-body: 'Inter', sans-serif;
         }
 
-        /* RESET BÁSICO */
+        /* RESET BÁSICO E ACESSIBILIDADE */
         * {
             margin: 0;
             padding: 0;
@@ -38,6 +38,7 @@
             align-items: center;
             padding: 40px 20px;
             min-height: 100vh;
+            background: radial-gradient(circle at top, #1a1a1a 0%, #080808 100%);
         }
 
         /* HEADER */
@@ -49,14 +50,19 @@
         }
 
         .profile-pic {
-            width: 110px;
-            height: 110px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             border: 3px solid var(--neon-magenta);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.6);
             margin-bottom: 20px;
             object-fit: cover;
             background: #222;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-pic:hover {
+            transform: scale(1.05);
         }
 
         h1 {
@@ -83,7 +89,7 @@
             max-width: 480px;
         }
 
-        /* SEÇÕES DE CATEGORIAS */
+        /* CATEGORIAS */
         .category-title {
             font-family: var(--font-rock);
             font-size: 1.3rem;
@@ -93,9 +99,11 @@
             padding-left: 12px;
             border-left: 3px solid var(--neon-magenta);
             letter-spacing: 1px;
+            display: flex;
+            align-items: center;
         }
 
-        /* CARDS DE PRODUTOS */
+        /* CARDS */
         .card {
             background: var(--card-bg);
             border: 1px solid #222;
@@ -194,7 +202,7 @@
             letter-spacing: 1px;
         }
 
-        /* AJUSTE PARA TELAS MUITO PEQUENAS */
+        /* RESPONSIVIDADE PARA MOBILE */
         @media (max-width: 380px) {
             h1 { font-size: 1.8rem; }
             .card-img { height: 160px; }
@@ -204,54 +212,54 @@
 <body>
 
     <header>
-        <!-- FOTO DE PERFIL: Substitua o link abaixo pela sua foto real -->
-        <img src="https://github.com/abozzojr.png" alt="Perfil Além da Capa" class="profile-pic">
+        <!-- LOGO: O código procura pelo ficheiro 'logo.jpg' no seu repositório GitHub -->
+        <img src="logo.jpg" alt="Logótipo Além da Capa" class="profile-pic" onerror="this.src='https://github.com/abozzojr.png'">
         
         <h1>@alemdacap</h1>
-        <p class="bio">Histórias por trás das capas mais famosas da música. 🤘</p>
+        <p class="bio">As histórias por trás das capas mais icónicas da música. 🤘</p>
     </header>
 
     <main class="content-wrapper">
 
-        <!-- CATEGORIA 01 -->
+        <!-- CATEGORIA 01: DISCOS -->
         <h2 class="category-title">Discos Clássicos</h2>
 
         <div class="card">
-            <!-- Link da imagem do produto -->
-            <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=600" alt="Vinil Dark Side" class="card-img">
+            <!--  -->
+            <img src="https://images.unsplash.com/photo-1603048588665-791ca8aea617?w=600" alt="Disco de Vinil" class="card-img">
             <div class="card-content">
-                <h3 class="card-title">Vinil: The Dark Side of the Moon</h3>
-                <p class="card-description">O clássico absoluto do Pink Floyd para sua coleção.</p>
-                <!-- SEU LINK DE AFILIADO ABAIXO -->
-                <a href="SEU_LINK_AQUI" target="_blank" class="btn-action">Comprar na Amazon</a>
+                <h3 class="card-title">Vinil: Edições de Colecionador</h3>
+                <p class="card-description">As melhores prensagens das capas que analisamos no nosso perfil.</p>
+                <!-- SUBSTITUA O # PELO SEU LINK DE AFILIADO AMAZON -->
+                <a href="SEU_LINK_AMAZON_AQUI" target="_blank" class="btn-action">Comprar na Amazon</a>
             </div>
         </div>
 
-
-        <!-- CATEGORIA 02 -->
+        <!-- CATEGORIA 02: LIVROS -->
         <h2 class="category-title">Biblioteca do Rock</h2>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600" alt="Livro Biografia" class="card-img">
+            <!--  -->
+            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600" alt="Livro sobre Rock" class="card-img">
             <div class="card-content">
-                <h3 class="card-title">Led Zeppelin: A Biografia</h3>
-                <p class="card-description">Conheça os segredos por trás da maior banda de Hard Rock.</p>
-                <!-- SEU LINK DE AFILIADO ABAIXO -->
-                <a href="SEU_LINK_AQUI" target="_blank" class="btn-action">Ver no Mercado Livre</a>
+                <h3 class="card-title">Biografias e Bastidores</h3>
+                <p class="card-description">Descubra os detalhes que não cabem num vídeo de 60 segundos.</p>
+                <!-- SUBSTITUA O # PELO SEU LINK MERCADO LIVRE -->
+                <a href="SEU_LINK_ML_AQUI" target="_blank" class="btn-action">Ver no Mercado Livre</a>
             </div>
         </div>
 
-
-        <!-- CATEGORIA 03 -->
+        <!-- CATEGORIA 03: DECORAÇÃO -->
         <h2 class="category-title">Caverna do Rock</h2>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?w=600" alt="Decoração Marshall" class="card-img">
+            <!--  -->
+            <img src="https://images.unsplash.com/photo-1598387181032-a3103a2db5b3?w=600" alt="Quadro Decorativo" class="card-img">
             <div class="card-content">
-                <h3 class="card-title">Quadro Marshall Vintage</h3>
-                <p class="card-description">Arte em alta definição para decorar o seu estúdio.</p>
-                <!-- SEU LINK DE AFILIADO ABAIXO -->
-                <a href="SEU_LINK_AQUI" target="_blank" class="btn-action">Comprar na Shopee</a>
+                <h3 class="card-title">Artigos de Decoração</h3>
+                <p class="card-description">Quadros e acessórios para quem vive e respira Rock n' Roll.</p>
+                <!-- SUBSTITUA O # PELO SEU LINK SHOPEE -->
+                <a href="SEU_LINK_SHOPEE_AQUI" target="_blank" class="btn-action">Comprar na Shopee</a>
             </div>
         </div>
 
@@ -260,8 +268,8 @@
     <footer>
         <div class="social-links">
             <a href="https://instagram.com/alemdacap" target="_blank">Instagram</a>
-            <a href="#" target="_blank">TikTok</a>
-            <a href="#" target="_blank">YouTube</a>
+            <a href="https://tiktok.com/@alemdacap" target="_blank">TikTok</a>
+            <a href="https://youtube.com/@alemdacap" target="_blank">YouTube</a>
         </div>
         <p class="copyright">🤘 ALÉM DA CAPA &copy; 2026</p>
     </footer>
