@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@alemdacap | Rock & Links</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Oswald:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0a;
+            --card-bg: #161616;
+            --neon-magenta: #ff00ff;
+            --neon-cyan: #00f2ff;
+            --text-color: #f0f0f0;
+            --font-main: 'Inter', sans-serif;
+            --font-title: 'Oswald', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: var(--font-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        /* HEADER */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-magenta);
+            box-shadow: 0 0 15px var(--neon-magenta);
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--neon-cyan);
+            text-shadow: 2px 2px 10px rgba(0, 242, 255, 0.5);
+        }
+
+        .bio {
+            font-size: 0.9rem;
+            color: #aaa;
+            max-width: 300px;
+            margin: 10px auto;
+        }
+
+        /* SEÇÕES E CATEGORIAS */
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+
+        .category-title {
+            font-family: var(--font-title);
+            font-size: 1.4rem;
+            margin: 30px 0 15px;
+            border-left: 4px solid var(--neon-magenta);
+            padding-left: 10px;
+            text-transform: uppercase;
+        }
+
+        /* CARDS DE PRODUTO */
+        .product-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon-cyan);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background: #222; /* Placeholder enquanto carrega */
+        }
+
+        .product-info {
+            padding: 15px;
+        }
+
+        .product-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .product-desc {
+            font-size: 0.85rem;
+            color: #bbb;
+            margin-bottom: 15px;
+        }
+
+        .buy-button {
+            display: block;
+            text-align: center;
+            background: transparent;
+            color: var(--neon-cyan);
+            border: 2px solid var(--neon-cyan);
+            padding: 10px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 0px var(--neon-cyan);
+        }
+
+        .buy-button:hover {
+            background: var(--neon-cyan);
+            color: #000;
+            box-shadow: 0 0 15px var(--neon-cyan);
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            padding-bottom: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-color);
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 1.5rem;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            color: var(--neon-magenta);
+        }
+
+        /* Responsividade Extra */
+        @media (max-width: 480px) {
+            h1 { font-size: 1.7rem; }
+            .product-img { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="https://via.placeholder.com/150" alt="Logo Além da Capa" class="profile-pic">
+        <h1>@alemdacap</h1>
+        <p class="bio">Histórias por trás das capas mais famosas da música. 🤘</p>
+    </header>
+
+    <div class="container">
+        
+        <h2 class="category-title">Discos Clássicos</h2>
+        
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x200" alt="Vinil" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Pink Floyd - Dark Side (Vinyl)</h3>
+                <p class="product-desc">O clássico absoluto para sua coleção com a melhor prensagem.</p>
+                <a href="#" target="_blank" class="buy-button">Comprar na Amazon</a>
+            </div>
+        </div>
+
+        <h2 class="category-title">Biblioteca do Rock</h2>
+        
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x200" alt="Livro" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Biografias Inacreditáveis</h3>
+                <p class="product-desc">Conheça os segredos por trás das turnês mais loucas da história.</p>
+                <a href="#" target="_blank" class="buy-button">Ver no Mercado Livre</a>
+            </div>
+        </div>
+
+        <h2 class="category-title">Caverna do Rock</h2>
+        
+        <div class="product-card">
+            <img src="https://via.placeholder.com/400x200" alt="Decoração" class="product-img">
+            <div class="product-info">
+                <h3 class="product-title">Quadro Led Zeppelin</h3>
+                <p class="product-desc">Arte exclusiva em alta definição para decorar seu estúdio.</p>
+                <a href="#" target="_blank" class="buy-button">Comprar na Shopee</a>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <div class="social-links">
+            <a href="https://instagram.com/alemdacap" target="_blank">IG</a>
+            <a href="#" target="_blank">TT</a>
+            <a href="#" target="_blank">YT</a>
+        </div>
+        <p style="font-size: 0.7rem; margin-top: 15px; color: #555;">&copy; 2026 Além da Capa</p>
+    </footer>
+
+</body>
+</html>
