@@ -158,7 +158,13 @@
                     "pink-floyd": {
                         nome: "Pink Floyd",
                         produtos: [
-                            { nome: "Division Bell", tipo: "Disco Vinil", img: "discos.png", link: "https://amzn.to/47aBkgw" }
+                            { 
+                                nome: "Division Bell", 
+                                tipo: "Disco Vinil", 
+                                // AQUI ESTÁ O NOME EXATO DO ARQUIVO QUE VOCÊ SUBIU 👇
+                                img: "pinkfloyd_division-bell.png", 
+                                link: "https://amzn.to/47aBkgw" 
+                            }
                         ]
                     }
 
@@ -183,7 +189,7 @@
         };
     </script>
     <!-- =========================================================================
-         FIM DO SEU BANCO DE DADOS (Não precisa alterar nada daqui para baixo)
+         FIM DO SEU BANCO DE DADOS
          ========================================================================= -->
 
     <header>
@@ -240,12 +246,17 @@
             tituloTela.innerText = BANCO_DE_DADOS[catId].titulo;
 
             let html = '<div class="grid-list">';
-            for (const bandaId in BANCO_DE_DADOS[catId].bandas) {
-                html += `
-                    <div class="list-card" onclick="abrirBanda('${catId}', '${bandaId}')">
-                        <span class="list-card-title">⚡ ${BANCO_DE_DADOS[catId].bandas[bandaId].nome}</span>
-                        <span class="list-card-icon">➔</span>
-                    </div>`;
+            
+            if (Object.keys(BANCO_DE_DADOS[catId].bandas).length === 0) {
+                html += `<p style="text-align:center; color: var(--text-dim); margin-top: 20px;">Em breve novos itens nesta categoria! 🤘</p>`;
+            } else {
+                for (const bandaId in BANCO_DE_DADOS[catId].bandas) {
+                    html += `
+                        <div class="list-card" onclick="abrirBanda('${catId}', '${bandaId}')">
+                            <span class="list-card-title">⚡ ${BANCO_DE_DADOS[catId].bandas[bandaId].nome}</span>
+                            <span class="list-card-icon">➔</span>
+                        </div>`;
+                }
             }
             html += '</div>';
             animarEAtualizar(html);
@@ -257,7 +268,6 @@
             const banda = BANCO_DE_DADOS[catId].bandas[bandaId];
             tituloTela.innerText = banda.nome;
 
-            // Contador Automático
             const contagem = {};
             banda.produtos.forEach(prod => { contagem[prod.tipo] = (contagem[prod.tipo] || 0) + 1; });
 
@@ -268,7 +278,7 @@
             banda.produtos.forEach(prod => {
                 html += `
                     <div class="product-card">
-                        <img src="${prod.img}" alt="" class="product-img" onerror="this.src='https://via.placeholder.com/400x400/1a1a1a/00f2ff?text=ROCK'">
+                        <img src="${prod.img}" alt="" class="product-img" onerror="this.src='https://via.placeholder.com/400x400/1a1a1a/00f2ff?text=FOTO'">
                         <div class="product-info">
                             <h4 class="product-title">${prod.nome}</h4>
                             <span class="product-type">${prod.tipo}</span>
@@ -292,7 +302,6 @@
             appContainer.innerHTML = html;
         }
 
-        // Inicia a aplicação
         renderHome();
     </script>
 </body>
